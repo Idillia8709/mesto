@@ -1,0 +1,8 @@
+@import url('../footer/__copyright/footer__copyright.css');
+@import url('../footer/_position/footer_position.css');
+.footer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}

@@ -1,0 +1,10 @@
+@import url('../element/__description/element__description.css');
+@import url('../element/__title/element__title.css');
+@import url('../element/__image/element__image.css');
+.element {
+    width: 282px;
+    height: 362px;
+    background: #ffffff;
+    border-radius: 10px 10px 10px 10px;
+
+}

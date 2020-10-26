@@ -1,0 +1,11 @@
+@import url('../header/__line/header__line.css');
+@import url('../header/_position/header_position.css');
+.header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    
+}
