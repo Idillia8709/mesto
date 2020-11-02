@@ -1,3 +1,8 @@
 .header_position {
-    margin: 45px 0 40px 0;
+margin: 45px auto 40px auto;
+}
+@media screen and (max-width: 767px) and (min-width: 320px) {
+  .header_position {
+    margin: 28px auto 42.25px auto;
+  }
 }
