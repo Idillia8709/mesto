@@ -23,7 +23,7 @@
           </div>
           <p class="profile__subtitle">Исследователь океана</p>
         </div>
-        <button type="button" class="profile__button-add button"></button>
+        <button type="button" class="profile__button-add"></button>
       </section>
       <section class="places places_position">
         <ul class="elements">
@@ -63,7 +63,7 @@
             </div>
           </li>
           <li class="element">
-            <img class="element__image" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="">
+            <img class="element__image" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск">
             <div class="element__description">
               <h2 class="element__title">Карачаевo-Черкессия</h2>
               <button type="button" class="element__button-like"></button>
@@ -71,21 +71,21 @@
           </li>
         </ul>
       </section>
-      <div class="popup">
-        <form class="popup__container">
-          <h2 class="popup__title">Редактировать профиль</h2>
-          <input type="text" class="popup__input-title">
-          <input type="text" class="popup__input-subtitle">
-          <button type="submit" class="popup__button-save">Сохранить</button>
-          <button type="button" class="popup__button-exit"></button>
-        </form>
-      </div>
     </main>
+    <div class="popup">
+      <form class="popup__container" name="popup-container">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <input type="text" class=" popup__input popup_input-title" name="popup-input-title">
+        <input type="text" class="popup__input popup_input-subtitle" name="popup-input-subtitle">
+        <button type="submit" class="popup__button-save">Сохранить</button>
+        <button type="button" class="popup__button-exit"></button>
+      </form>
+    </div>
     <footer class="footer footer_position">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
-    <script src="scripts/index.js"></script>
   </div>
+  <script src="scripts/index.js"></script>
 </body>
 
 </html>

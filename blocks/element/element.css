@@ -3,9 +3,10 @@
 @import url('../element/__image/element__image.css');
 @import url('../element/__button-like/element__button-like.css');
 .element {
-    width: 282px;
-    height: 361px;
-    background: #ffffff;
-    border-radius: 10px 10px 10px 10px;
-
+  width: 282px;
+  background: #ffffff;
+  border-radius: 10px 10px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
