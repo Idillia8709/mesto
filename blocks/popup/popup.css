@@ -17,6 +17,7 @@
 @import url('../popup/_type/popup_type_edit.css');
 @import url('../popup/_type/popup_type_image.css');
 .popup {
+  display: flex;
   position: fixed;
   left: 0;
   top: 0;
