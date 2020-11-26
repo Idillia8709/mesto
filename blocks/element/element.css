@@ -2,10 +2,14 @@
 @import url('../element/__title/element__title.css');
 @import url('../element/__image/element__image.css');
 @import url('../element/__button-like/element__button-like.css');
+@import url('../element/__button-delete/element__button-delete.css');
+@import url('../element/__button-image/element__button-image.css');
+@import url('../element/__button-like/_active/element__button-like_active_black.css');
 .element {
   width: 282px;
   background: #ffffff;
   border-radius: 10px 10px 10px 10px;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;

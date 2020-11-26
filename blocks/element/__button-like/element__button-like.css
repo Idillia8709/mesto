@@ -1,6 +1,7 @@
 .element__button-like {
   padding: 0;
   background-image: url('../../../images/like.svg');
+  background-repeat: no-repeat;
   background-color: transparent;
   border: none;
   outline: none;
