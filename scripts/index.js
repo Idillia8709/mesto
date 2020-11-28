@@ -121,7 +121,6 @@ formEditProfile.addEventListener('submit', formSubmitHandler);
 window.addEventListener('load', render);
 addButton.addEventListener('click', showAddCardPopup);
 formAddCard.addEventListener('submit', addNewCard);
-
 document.addEventListener('keyup', (event) => {
   if (event.key === 'Escape') {
     overlays.forEach(overlay => closePopup(overlay));
