@@ -46,7 +46,9 @@ function enableValidation(config) {
     setEventListeners(form, config);
     form.addEventListener('submit', (event) => {
       event.preventDefault();
-    } );
+      
+
+    });
   });
 }
 

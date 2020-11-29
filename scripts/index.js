@@ -5,7 +5,7 @@ const popupAdd = document.querySelector('.popup_type_add');
 const popupImage = document.querySelector('.popup_type_image');
 const closeButtons = document.querySelectorAll('.popup__button-exit');
 const editButton = document.querySelector('.profile__button-edit');
-const addButton = document.querySelector('.profile__button-add');
+const addCardButton = document.querySelector('.profile__button-add');
 const creatButton = document.querySelector('.popup__button-creat');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
@@ -24,15 +24,35 @@ const enableConfigPopup = {
   submitButtonSelector: '.popup__button-form',
   inactiveButtonClass: 'popup__button-form_disabled',
   inputErrorClass: 'popup__input_type_error',
-  errorClass: '.popup__error_visible'
+  errorClass: 'popup__error_visible'
 };
+
+function clearForm(config) {
+  connfig.form
+}
+
+function closePopupByEsc(event) {
+  if (event.key === 'Escape') { 
+    const popup = document.querySelector('.popup_opened');
+    closePopup(popup); 
+  } 
+}
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupByEsc);
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupByEsc);
+}
+
+
+function closePopupEsc(event) {
+  if (event.key === 'Escape') {
+    overlays.forEach(overlay => closePopup(overlay));
+  }
 }
 
 function openCardPopup(name, link) {
@@ -95,34 +115,32 @@ function addNewCard(event) {
   const name = document.querySelector('.popup__input_name');
   const link = document.querySelector('.popup__input_link');
   addCard(cardElementsList, createCard(name.value, link.value));
+
+  formAddCard.reset();
   closePopup(popupAdd);
 }
 
 function showAddCardPopup() {
   const name = document.querySelector('.popup__input_name');
   const link = document.querySelector('.popup__input_link');
-  name.value = '';
-  link.value = '';
-  cardAdd.disabled = true;
-  cardAdd.classList.add(enableConfigPopup.inactiveButtonClass);
+  setButtonState(cardAdd, false, enableConfigPopup);
+  // name.value = '';
+  // link.value = '';
+  // cardAdd.disabled = true;
+  // cardAdd.classList.add(enableConfigPopup.inactiveButtonClass);
   openPopup(popupAdd);
 }
 
 editButton.addEventListener('click', openEditProfile);
 closeButtons.forEach(button => button.addEventListener('click', () => closePopup(button.closest('.popup'))));
 overlays.forEach((overlay) => {
-  overlay.addEventListener('click',  (event) => {
-    if (overlay === event.target) {
-      closePopup(overlay);
-    }
-  })
-});
+   overlay.addEventListener('click', (event) => {
+     if (overlay === event.target) {
+       closePopup(overlay);
+     }
+   })
+ });
 formEditProfile.addEventListener('submit', formSubmitHandler);
 window.addEventListener('load', render);
-addButton.addEventListener('click', showAddCardPopup);
+addCardButton.addEventListener('click', showAddCardPopup);
 formAddCard.addEventListener('submit', addNewCard);
-document.addEventListener('keyup', (event) => {
-  if (event.key === 'Escape') {
-    overlays.forEach(overlay => closePopup(overlay));
-  }
-});

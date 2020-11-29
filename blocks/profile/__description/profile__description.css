@@ -1,4 +1,9 @@
 .profile__description {
 	display: flex;
-  flex-direction: column;  
+  flex-direction: column;
+  justify-content: baseline; 
+  max-width: 336px;
+  width: 336px;
+  justify-content: space-between;
+
 }
