@@ -115,7 +115,6 @@ function addNewCard(event) {
   const name = document.querySelector('.popup__input_name');
   const link = document.querySelector('.popup__input_link');
   addCard(cardElementsList, createCard(name.value, link.value));
-
   formAddCard.reset();
   closePopup(popupAdd);
 }
@@ -124,10 +123,6 @@ function showAddCardPopup() {
   const name = document.querySelector('.popup__input_name');
   const link = document.querySelector('.popup__input_link');
   setButtonState(cardAdd, false, enableConfigPopup);
-  // name.value = '';
-  // link.value = '';
-  // cardAdd.disabled = true;
-  // cardAdd.classList.add(enableConfigPopup.inactiveButtonClass);
   openPopup(popupAdd);
 }
 
