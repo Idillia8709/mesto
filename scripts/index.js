@@ -49,19 +49,15 @@ function render() {
 
 function addCardByTheUser(event) {
   event.preventDefault();
-  // const name = document.querySelector('.popup__input_name');
-  // const link = document.querySelector('.popup__input_link');
   const card = new Card(name.value, link.value);
   addCard(cardListElements, card.getElement());
-  formAddCard.reset();
   cardPopup.close();
 }
 
 function showAddCardPopup() {
+  formAddCard.reset();
   const addFormValidatin = new FormValidator(enableConfigPopup, formAddCard);
   addFormValidatin.enableValidation();
-  name.value = '';
-  link.value = '';
   cardPopup.open();
 }
 
