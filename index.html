@@ -27,50 +27,39 @@
       </section>
       <section class="places places_position">
         <ul class="elements">
-          <template class="card-template">
-            <li class="element">
-              <button class="element__button-image" type="button">
-                <img class="element__image" src="#" alt="фото">
-              </button>
-              <div class="element__description">
-                <h2 class="element__title"></h2>
-                <button type="button" class="element__button-like"></button>
-                <button type="button" class="element__button-delete"></button>
-              </div>
-            </li>
-          </template>
         </ul>
       </section>
     </main>
     <div class="popup popup_type_edit">
-      <form class="popup__container popup__container_form_edit" name="popup-container" novalidate>
+      <form class="popup__container popup__container_form_edit" name="popup-edit-profile" novalidate>
         <h2 class="popup__title">Редактировать профиль</h2>
         <label class="popup__label">
           <input type="text" class=" popup__input popup__input_title" name="input-title" id="input-title"
             placeholder="Имя" required minlength="2" maxlength="40" autocomplete="off">
-          <span id="input-title-error" class="popup__error"></span>
+          <span id="input-title-error" class="popup__error popup__error_visible"></span>
         </label>
         <label class="popup__label">
           <input type="text" class="popup__input popup__input_subtitle" name="input-subtitle" id="input-subtitle"
             placeholder="О себе" required minlength="2" maxlength="200" autocomplete="off">
-          <span id="input-subtitle-error" class="popup__error"></span>
+          <span id="input-subtitle-error" class="popup__error popup__error_visible"></span>
         </label>
         <button type="submit" class="popup__button-form popup__button-form_save_profile">Сохранить</button>
         <button type="button" class="popup__button-exit"></button>
       </form>
     </div>
     <div class="popup popup_type_add">
-      <form class="popup__container popup__container_form_add" name="popup-container" novalidate>
+      <form class="popup__container popup__container_form_add" name="popup-add-card" novalidate>
         <h2 class="popup__title">Новое место</h2>
         <label class="popup__label">
           <input type="text" class=" popup__input popup__input_name" name="input-name" id="input-name"
             placeholder="Название" required minlength="2" maxlength="30" autocomplete="off">
-          <span id="input-name-error" class="popup__error"></span>
+          <span id="input-name-error" class="popup__error popup__error_visible"></span>
         </label>
         <label class="popup__label">
           <input type="url" class="popup__input popup__input_link" name="input-image-link" id="input-link"
             placeholder="Ссылка на картинку" required autocomplete="off">
-          <span id="input-link-error" class="popup__error"></span>
+          <span id="input-link-error" class="popup__error popup__error_visible"></span>
+
         </label>
         <button type="submit"
           class="popup__button-form popup__button-form_create_card popup__button-form_disabled">Создать</button>
@@ -88,11 +77,19 @@
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
   </div>
+  <template class="card-template">
+    <li class="element">
+      <button class="element__button-image" type="button">
+        <img class="element__image" src="#" alt="фото">
+      </button>
+      <div class="element__description">
+        <h2 class="element__title"></h2>
+        <button type="button" class="element__button-like"></button>
+        <button type="button" class="element__button-delete"></button>
+      </div>
+    </li>
+  </template>
   <script type="module" src="scripts/index.js"></script>
-  <script type="module" src="scripts/Card.js"></script>
-  <script type="module" src="scripts/FormValidator.js"></script>
-  <script type="module" src="scripts/Popup.js"></script>
-  <script type="module" src="scripts/constants.js"></script>
 </body>
 
 </html>

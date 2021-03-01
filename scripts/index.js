@@ -3,6 +3,7 @@ import Card from './Card.js';
 import Popup from './Popup.js';
 import FormValidator from './FormValidator.js';
 
+
 const editButton = document.querySelector('.profile__button-edit');
 const addCardButton = document.querySelector('.profile__button-add');
 const nameInput = document.querySelector('.popup__input_title');
@@ -14,13 +15,18 @@ const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 const name = document.querySelector('.popup__input_name');
 const link = document.querySelector('.popup__input_link');
-const popupAdd = document.querySelector('.popup_type_add');
-const cardPopup = new Popup(popupAdd);
+const templateCard = document.querySelector('.card-template');
+const popupAddCard = document.querySelector('.popup_type_add');
+const cardPopup = new Popup(popupAddCard);
 const popupEditProfile = document.querySelector('.popup_type_edit');
 const profilePopup =  new Popup(popupEditProfile);
+const popupImage = document.querySelector('.popup_type_image');
+const imageCardPopup = new Popup(popupImage);
+const editFormValidation = new FormValidator(enableConfigPopup, formEditProfile);
+const addFormValidatin = new FormValidator(enableConfigPopup, formAddCard);
 
 
-function formSubmitHandler(event) {
+function submitProfileForm(event) {
   event.preventDefault();
   profileTitle.textContent = nameInput.value;
   profileSubtitle.textContent = jobInput.value;
@@ -28,11 +34,12 @@ function formSubmitHandler(event) {
 }
 
 function openEditProfile() {
+  editFormValidation.resetValidation();
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
   profilePopup.open();
-  const editFormValidation = new FormValidator(enableConfigPopup, formEditProfile);
   editFormValidation.enableValidation();
+  
 }
 
 function addCard(container, cardElement) {
@@ -41,7 +48,7 @@ function addCard(container, cardElement) {
 
 function render() {
   initialCards.reverse().forEach(({ name, link }) => {
-    const card = new Card(name, link);
+    const card = new Card(name, link, templateCard, imageCardPopup);
     addCard(cardListElements, card.getElement());
 
   })
@@ -49,21 +56,21 @@ function render() {
 
 function addCardByTheUser(event) {
   event.preventDefault();
-  const card = new Card(name.value, link.value);
+  const card = new Card(name.value, link.value, templateCard, imageCardPopup);
   addCard(cardListElements, card.getElement());
   cardPopup.close();
 }
 
 function showAddCardPopup() {
+  addFormValidatin.resetValidation();
   formAddCard.reset();
-  const addFormValidatin = new FormValidator(enableConfigPopup, formAddCard);
   addFormValidatin.enableValidation();
   cardPopup.open();
+  
 }
 
 editButton.addEventListener('click', openEditProfile);
 window.addEventListener('load', render);
 addCardButton.addEventListener('click', showAddCardPopup);
 formAddCard.addEventListener('submit', addCardByTheUser);
-formEditProfile.addEventListener('submit', formSubmitHandler);
-
+formEditProfile.addEventListener('submit', submitProfileForm);
