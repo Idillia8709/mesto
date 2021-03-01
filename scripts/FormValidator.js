@@ -1,6 +1,6 @@
 import { initialCards } from './constants.js';
 export default class FormValidator {
- 
+
   constructor(config, form) {
     this._config = config;
     this._form = form;
@@ -54,17 +54,28 @@ export default class FormValidator {
     });
   }
 
+  resetValidation() {
+    const inputList = this._form.querySelectorAll(this._config.inputSelector);
+    inputList.forEach((input) => {
+      this._hideError(input);
+    });
+    
+  }
+
   enableValidation() {
     if (!this._isRequredFieldsFilled()) {
-      console.log('we should disable button');
       this._setSubmitButtonState(false);
+    } else {
+      this._setSubmitButtonState(true);
     }
     this._form.addEventListener('submit', (event) => {
       event.preventDefault();
     });
     this._setEventListeners();
-    
+
   }
+
+
 
 
 
