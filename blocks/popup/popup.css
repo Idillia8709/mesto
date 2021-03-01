@@ -2,6 +2,7 @@
 @import url('../popup/__container/_form/popup__container_form_edit.css');
 @import url('../popup/__container/_form/popup__container_form_add.css');
 @import url('../popup/__input/popup__input.css');
+@import url('../popup/__input/_type/popup__input_type_error.css');
 @import url('../popup/__label/popup__label.css');
 @import url('../popup/__input/_title/popup__input_title.css');
 @import url('../popup/__input/_subtitle/popup__input_subtitle.css');
