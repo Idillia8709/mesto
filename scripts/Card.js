@@ -1,14 +1,15 @@
 import Popup from './Popup.js';
-
 export default class Card {
   _element;
   _popup;
   _popupImage;
   _popupTitle;
 
-  constructor(name, link) {
+  constructor(name, link, templateCard, popup) {
     this._name = name;
     this._link = link;
+    this._templateCard = templateCard;
+    this._popup = popup;
 
     this._createCard();
     this._initListeners();
@@ -16,14 +17,13 @@ export default class Card {
   }
 
   _getTemplate() {
-    return document.querySelector('.card-template').content.querySelector('.element').cloneNode(true);
+    return this._templateCard.content.querySelector('.element').cloneNode(true);
   }
 
   _initPopup() {
     const popupElement = document.querySelector('.popup_type_image');
     this._popupImage = popupElement.querySelector('.popup__image');
     this._popupTitle = popupElement.querySelector('.popup__paragraph');
-    this._popup = new Popup(popupElement);
   }
   
   _openPopup() {
@@ -45,6 +45,7 @@ export default class Card {
 
   _deleteCard() {
     this._element.remove();
+    this._element = null;
   }
   
   _createCard() {
