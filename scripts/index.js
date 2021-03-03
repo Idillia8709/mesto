@@ -23,7 +23,9 @@ const profilePopup =  new Popup(popupEditProfile);
 const popupImage = document.querySelector('.popup_type_image');
 const imageCardPopup = new Popup(popupImage);
 const editFormValidation = new FormValidator(enableConfigPopup, formEditProfile);
+editFormValidation.enableValidation();
 const addFormValidatin = new FormValidator(enableConfigPopup, formAddCard);
+addFormValidatin.enableValidation();
 
 
 function submitProfileForm(event) {
@@ -34,11 +36,11 @@ function submitProfileForm(event) {
 }
 
 function openEditProfile() {
+  editFormValidation.setSubmitButtonState(true);
   editFormValidation.resetValidation();
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
   profilePopup.open();
-  editFormValidation.enableValidation();
   
 }
 
@@ -62,9 +64,9 @@ function addCardByTheUser(event) {
 }
 
 function showAddCardPopup() {
+  addFormValidatin.setSubmitButtonState(false);
   addFormValidatin.resetValidation();
   formAddCard.reset();
-  addFormValidatin.enableValidation();
   cardPopup.open();
   
 }
