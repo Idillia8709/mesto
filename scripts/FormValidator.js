@@ -26,7 +26,16 @@ export default class FormValidator {
     }
   }
 
-  _setSubmitButtonState(isActive) {
+  _setEventListeners() {
+    const inputList = this._form.querySelectorAll(this._config.inputSelector);
+    inputList.forEach((input) => {
+      input.addEventListener('input', () => {
+        this._checkInputValidity(input);
+        this.setSubmitButtonState(this._form.checkValidity());
+      });
+    });
+  }
+  setSubmitButtonState(isActive) {
     const button = this._form.querySelector(this._config.submitButtonSelector);
     if (isActive) {
       button.classList.remove(this._config.inactiveButtonClass);
@@ -37,37 +46,15 @@ export default class FormValidator {
     }
   }
 
-  _isRequredFieldsFilled() {
-    const requiredInputs = Array.from(this._form.elements).filter(input => (
-      input.tagName === 'INPUT' && input.required
-    ));
-    return requiredInputs.every(input => input.value);
-  }
-
-  _setEventListeners() {
-    const inputList = this._form.querySelectorAll(this._config.inputSelector);
-    inputList.forEach((input) => {
-      input.addEventListener('input', () => {
-        this._checkInputValidity(input);
-        this._setSubmitButtonState(this._form.checkValidity());
-      });
-    });
-  }
-
   resetValidation() {
     const inputList = this._form.querySelectorAll(this._config.inputSelector);
     inputList.forEach((input) => {
       this._hideError(input);
     });
-    
+
   }
 
   enableValidation() {
-    if (!this._isRequredFieldsFilled()) {
-      this._setSubmitButtonState(false);
-    } else {
-      this._setSubmitButtonState(true);
-    }
     this._form.addEventListener('submit', (event) => {
       event.preventDefault();
     });
