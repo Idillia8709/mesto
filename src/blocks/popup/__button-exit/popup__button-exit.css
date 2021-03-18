@@ -1,7 +1,7 @@
 .popup__button-exit {
   width: 40px;
   height: 40px;
-  background: transparent url('../../../images/Close\ Icon.svg') center no-repeat;
+  background: transparent url('../../../images/Close_Icon.svg') center no-repeat;
   background-size: 40px 40px;
   border: none;
   position: absolute;

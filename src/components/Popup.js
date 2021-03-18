@@ -1,37 +1,37 @@
-import { esc } from './constants.js'
+import { esc } from '../utils/constants.js'
 export default class Popup {
   constructor(element) {
     this._element = element;
     this._closeBtn = element.querySelector('.popup__button-exit');
     this.close = this.close.bind(this);
-    this._closeByEsc = this._closeByEsc.bind(this);
-    this._closeByOverlayClick = this._closeByOverlayClick.bind(this);
-    this._initListeners();
+    this._handleEscClose = this._handleEscClose.bind(this);
+    this._handleOverlayClickClose = this._handleOverlayClickClose.bind(this);
+    this.setEventListeners();
   }
 
-  _closeByEsc(event) {
+  _handleEscClose(event) {
     if (event.key === esc) {
       this.close();
     }
   }
 
-  _closeByOverlayClick(event) {
+  _handleOverlayClickClose(event) {
     if (event.target === this._element) {
       this.close();
     }
   }
   
-  _initListeners() {
+  setEventListeners() {
     this._closeBtn.addEventListener('click', this.close);
-    this._element.addEventListener('mousedown', this._closeByOverlayClick);
+    this._element.addEventListener('mousedown', this._handleOverlayClickClose);
   }
   
   open() {
     this._element.classList.add('popup_opened');
-    document.addEventListener('keydown', this._closeByEsc);
+    document.addEventListener('keydown', this._handleEscClose);
   }
   close() {
     this._element.classList.remove('popup_opened');
-    document.removeEventListener('keydown', this._closeByEsc);
+    document.removeEventListener('keydown', this._handleEscClose);
   }
 }

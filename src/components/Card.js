@@ -1,42 +1,22 @@
-import Popup from './Popup.js';
 export default class Card {
-  _element;
-  _popup;
-  _popupImage;
-  _popupTitle;
-
-  constructor(name, link, templateCard, popup) {
+  constructor(name, link, templateCard, handleCardClick) {
     this._name = name;
     this._link = link;
     this._templateCard = templateCard;
-    this._popup = popup;
+    this._handleCardClick = handleCardClick;
 
     this._createCard();
     this._initListeners();
-    this._initPopup();
-  }
+    }
 
   _getTemplate() {
     return this._templateCard.content.querySelector('.element').cloneNode(true);
   }
 
-  _initPopup() {
-    const popupElement = document.querySelector('.popup_type_image');
-    this._popupImage = popupElement.querySelector('.popup__image');
-    this._popupTitle = popupElement.querySelector('.popup__paragraph');
-  }
-  
-  _openPopup() {
-    this._popupImage.src = this._link;
-    this._popupImage.alt = this._name;
-    this._popupTitle.textContent = this._name;
-    this._popup.open();
-  }
-
-  _initListeners() {
+   _initListeners() {
     this._cardLike.addEventListener('click', this._toggleLike);
     this._cardDelete.addEventListener('click', () => this._deleteCard());
-    this._cardImage.addEventListener('click', () => this._openPopup());
+    this._cardImage.addEventListener('click', () => this._handleCardClick.open(this._name, this._link));
   }
 
   _toggleLike(event) {
@@ -46,8 +26,9 @@ export default class Card {
   _deleteCard() {
     this._element.remove();
     this._element = null;
+
   }
-  
+
   _createCard() {
     this._element = this._getTemplate();
     this._cardImage = this._element.querySelector('.element__image');

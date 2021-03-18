@@ -1,4 +1,4 @@
-import { initialCards } from './constants.js';
+import { initialCards } from '../utils/constants.js';
 export default class FormValidator {
 
   constructor(config, form) {
