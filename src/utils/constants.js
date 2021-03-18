@@ -40,4 +40,3 @@ export const addCardButton = document.querySelector('.profile__button-add');
 export const formEditProfile = document.querySelector('.popup__container_form_edit');
 export const formAddCard = document.querySelector('.popup__container_form_add');
 export const templateCard = document.querySelector('.card-template');
-export const popupImage = document.querySelector('.popup_type_image');

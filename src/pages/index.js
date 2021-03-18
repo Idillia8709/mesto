@@ -6,8 +6,7 @@ import {
   addCardButton,
   formEditProfile,
   formAddCard,
-  templateCard,
-  popupImage
+  templateCard
 } from '../utils/constants.js';
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
@@ -16,7 +15,7 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
 import Section from '../components/Section.js';
 
-const imageCardPopup = new PopupWithImage(popupImage);
+const imageCardPopup = new PopupWithImage('.popup_type_image');
 const userInfo = new UserInfo({
   nameUserSelector: '.profile__title',
   jobUserSelector: '.profile__subtitle'
@@ -29,28 +28,22 @@ addFormValidatin.enableValidation();
 const cardList = new Section({
   items: initialCards,
   renderer: (item) => {
-    const card = new Card(item.name, item.link, templateCard, imageCardPopup);
-    const cardElement = card.getElement();
-    cardList.addItem(cardElement);
+    createCard(item.name, item.link);
   }
 }, '.elements');
 cardList.renderItems();
 
-const popupAddCard = document.querySelector('.popup_type_add');
-const cardPopup = new PopupWithForm(popupAddCard, (inputValues) => {
+const cardPopup = new PopupWithForm('.popup_type_add', (inputValues) => {
   const name = inputValues['input-name'];
   const link = inputValues['input-image-link'];
-  const card = new Card(name, link, templateCard, imageCardPopup);
-  const cardElement = card.getElement();
-  cardList.addItem(cardElement);
+  createCard(name, link);
 },
   (inputList) => {
     inputList.forEach(input => input.value = '')
   }
 );
 
-const popupEditProfile = document.querySelector('.popup_type_edit');
-const profilePopup = new PopupWithForm(popupEditProfile, (inputValues) => {
+const profilePopup = new PopupWithForm('.popup_type_edit', (inputValues) => {
   const userName = inputValues['input-title'];
   const userJob = inputValues['input-subtitle'];
   userInfo.setUserInfo(userName, userJob);
@@ -64,6 +57,13 @@ const profilePopup = new PopupWithForm(popupEditProfile, (inputValues) => {
     )
   }
 );
+
+function createCard(name, link) {
+  const card = new Card(name, link, templateCard, imageCardPopup);
+  const cardElement = card.getElement();
+  return cardList.addItem(cardElement);
+
+}
 
 function openEditProfile() {
   editFormValidation.setSubmitButtonState(true);

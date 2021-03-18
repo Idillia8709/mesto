@@ -1,8 +1,8 @@
 import { esc } from '../utils/constants.js'
 export default class Popup {
-  constructor(element) {
-    this._element = element;
-    this._closeBtn = element.querySelector('.popup__button-exit');
+  constructor(selectorPopup) {
+    this._element = document.querySelector(selectorPopup);
+    this._closeBtn = this._element.querySelector('.popup__button-exit');
     this.close = this.close.bind(this);
     this._handleEscClose = this._handleEscClose.bind(this);
     this._handleOverlayClickClose = this._handleOverlayClickClose.bind(this);
