@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "core-js": "^2.6.12",
+    "is-svg": "^4.3.1",
     "rimraf": "^3.0.2"
   },
   "devDependencies": {

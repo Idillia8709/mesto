@@ -6,7 +6,9 @@
 @import url('../profile/__button-edit/profile__button-edit.css');
 @import url('../profile/__button-add/profile__button-add.css');
 @import url('../profile/_position/profile_position.css');
+@import url('../profile/__overlay/profile__overlay.css');
 .profile {
+  position: relative;
   width: 100%;
   display: grid;
   grid-template-columns: 168.75px 1fr 150px;

@@ -14,7 +14,9 @@
     </header>
     <main class="main">
       <section class="profile profile_position">
-        <img class="profile__avatar" src="./images/image.jpg" alt="Жак-Ив Кусто">
+        <div class="profile__overlay">
+          <img class="profile__avatar" src="./images/image.jpg" alt="Жак-Ив Кусто">
+        </div>
         <div class="profile__description">
           <div class="profile__edit">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -58,10 +60,22 @@
           <input type="url" class="popup__input popup__input_link" name="input-image-link" id="input-link"
             placeholder="Ссылка на картинку" required autocomplete="off">
           <span id="input-link-error" class="popup__error popup__error_visible"></span>
-
         </label>
         <button type="submit"
           class="popup__button-form popup__button-form_create_card popup__button-form_disabled">Создать</button>
+        <button type="button" class="popup__button-exit"></button>
+      </form>
+    </div>
+    <div class="popup popup_type_avatar">
+      <form class="popup__container popup__container_form_avatar" name="popup-change-avatar" novalidate>
+        <h2 class="popup__title">Обновить аватар</h2>
+        <label class="popup__label">
+          <input type="url" class=" popup__input popup__input_url-avatar" name="input-url-avatar" id="input-avatar"
+            placeholder="Ссылка на аватар" required autocomplete="off">
+          <span id="input-avatar-error" class="popup__error popup__error_visible"></span>
+        </label>
+        <button type="submit"
+          class="popup__button-form popup__button-form_avatar popup__button-form_disabled">Сохранить</button>
         <button type="button" class="popup__button-exit"></button>
       </form>
     </div>
@@ -71,6 +85,13 @@
         <h3 class="popup__paragraph"></h3>
         <button type="button" class="popup__button-exit"></button>
       </div>
+    </div>
+    <div class="popup popup_type_deleteCard">
+      <form class="popup__container popup__container_form_delete" name="popup-delete-card" novalidate>
+        <h2 class="popup__title">Вы уверены?</h2>
+        <button type="submit" class="popup__button-form popup__button-form_delete_card">Да</button>
+        <button type="button" class="popup__button-exit"></button>
+      </form>
     </div>
     <footer class="footer footer_position">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
@@ -83,7 +104,10 @@
       </button>
       <div class="element__description">
         <h2 class="element__title"></h2>
-        <button type="button" class="element__button-like"></button>
+        <div class="element__like-counter">
+          <button type="button" class="element__button-like"></button>
+          <span class="element__number-of-like"></span>
+        </div>
         <button type="button" class="element__button-delete"></button>
       </div>
     </li>
