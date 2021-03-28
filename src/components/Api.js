@@ -18,7 +18,6 @@ export default
       headers: this.headers
     })
       .then(res => this._parseResponse(res))
-      .catch(err => Promise.reject(err));
   }
 
   createCard(data) {
@@ -31,7 +30,6 @@ export default
       })
     })
       .then(res => this._parseResponse(res))
-      .catch(err => Promise.reject(err))
 
   }
 
@@ -41,7 +39,6 @@ export default
       headers: this.headers
     })
       .then(res => this._parseResponse(res))
-      .catch(err => Promise.reject(err));
   }
 
   installLikeCard(id) {
@@ -50,7 +47,6 @@ export default
       headers: this.headers
     })
       .then(res => this._parseResponse(res))
-      .catch(err => Promise.reject(err));
   }
 
   removeLikeCard(id) {
@@ -59,7 +55,6 @@ export default
       headers: this.headers
     })
       .then(res => this._parseResponse(res))
-      .catch(err => Promise.reject(err));
   }
 
   getUserInfo() {
@@ -68,7 +63,6 @@ export default
       headers: this.headers
     })
       .then(res => this._parseResponse(res))
-      .catch(err => Promise.reject(err));
   }
 
   sendUserInfo(data) {
@@ -78,7 +72,6 @@ export default
       body: JSON.stringify(data)
     })
       .then(res => this._parseResponse(res))
-      .catch(err => Promise.reject(err));
   }
 
   editUserAvatar(data) {
@@ -88,8 +81,6 @@ export default
       body: JSON.stringify(data)
     })
       .then(res => this._parseResponse(res))
-      .catch(err => Promise.reject(err));
-
   }
 }
 

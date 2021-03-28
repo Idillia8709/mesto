@@ -9,7 +9,6 @@ export default
     this._collbackSubmitForm = callbackSubmitForm;
     this._handleFormFields = handleFormFields;
     this._inputList = this._element.querySelectorAll('.popup__input');
-    this._titleButton = this._submitButton.textContent
   }
   _getInputValues() {
     this._formValues = {};
@@ -26,13 +25,6 @@ export default
       this._submitButton.disabled = true;
     });
     super.setEventListeners();
-  }
-
-  loadingData(isLoading) {
-    if (isLoading) {
-      this._submitButton.textContent = 'Сохранение...'
-    } else
-    this._submitButton.textContent = this._titleButton;
   }
   
   open() {

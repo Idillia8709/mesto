@@ -6,14 +6,14 @@ export default
     super(selectorPopup);
     this._form = this._element.querySelector('.popup__container');
     this._submitButton = this._form.querySelector('.popup__button-form');
-    this._collbackSubmitForm = callbackSubmitForm
+    this._callbackSubmitForm = callbackSubmitForm
   }
 
   setEventListeners() {
     super.setEventListeners();
     this._element.addEventListener('submit', (event) => {
       event.preventDefault();
-      this._collbackSubmitForm(this._id, this._deleteElement);
+      this._callbackSubmitForm(this._id, this._deleteElement);
       
     })
   }

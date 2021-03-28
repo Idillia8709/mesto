@@ -19,9 +19,9 @@ export default
   }
 
   setUserInfo(dataUser) {
-    this._name.textContent = dataUser.name;
-    this._about.textContent = dataUser.about;
-    this._avatar.src = dataUser.avatar;
-    this._id = dataUser._id;
+    if (dataUser.name) { this._name.textContent = dataUser.name };
+    if (dataUser.about) { this._about.textContent = dataUser.about };
+    if (dataUser.avatar) { this._avatar.src = dataUser.avatar };
+    if (dataUser._id) { this._id = dataUser._id };
   }
 }

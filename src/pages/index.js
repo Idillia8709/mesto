@@ -7,8 +7,19 @@ import {
   formAddCard,
   templateCard,
   formEditAvatar,
-  editAvatarButton
+  editAvatarButton,
+  selectorPopupEditProfile,
+  selectorPopupAddCard,
+  selectorPopupUpdataAvatar,
+  selectorPopupDeleteCard,
+  submitEditProfile,
+  titleSubmitEditProfile,
+  submitAddCard,
+  titleSubmitAddCard,
+  submitEditAvatar,
+  titleSubmitEditAvatar
 } from '../utils/constants.js';
+import renderLoading from '../utils/utils.js';
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import PopupWithForm from '../components/PopupWithForm.js';
@@ -27,6 +38,7 @@ addFormValidatin.enableValidation();
 const avatarEditFormValidation = new FormValidator(enableConfigPopup, formEditAvatar);
 avatarEditFormValidation.enableValidation();
 const imageCardPopup = new PopupWithImage('.popup_type_image');
+
 
 const userInfo = new UserInfo({
   nameUserSelector: '.profile__title',
@@ -52,8 +64,8 @@ Promise.all([api.getCardList(), api.getUserInfo()])
     console.log('Ошибка:', err.message);
   });
 
-const profilePopup = new PopupWithForm('.popup_type_edit', (inputValues) => {
-  profilePopup.loadingData(true);
+const profilePopup = new PopupWithForm(selectorPopupEditProfile, (inputValues) => {
+  renderLoading(true, submitEditProfile, titleSubmitEditProfile);
   const userData = {
     name: inputValues['input-title'],
     about: inputValues['input-subtitle']
@@ -67,7 +79,7 @@ const profilePopup = new PopupWithForm('.popup_type_edit', (inputValues) => {
       console.log('Ошибка загрузки профиля:', err.message);
     })
     .finally(() => {
-      profilePopup.loadingData(false);
+     renderLoading(false, submitEditProfile, titleSubmitEditProfile);
     })
 },
   (inputList) => {
@@ -78,8 +90,8 @@ const profilePopup = new PopupWithForm('.popup_type_edit', (inputValues) => {
     })
   });
 
-const updateAvatarPopup = new PopupWithForm('.popup_type_avatar', (inputValues) => {
-  updateAvatarPopup.loadingData(true);
+const updateAvatarPopup = new PopupWithForm(selectorPopupUpdataAvatar, (inputValues) => {
+  renderLoading(true, submitEditAvatar, titleSubmitEditAvatar);
   const userData = {
     avatar: inputValues['input-url-avatar']
   }
@@ -93,7 +105,7 @@ const updateAvatarPopup = new PopupWithForm('.popup_type_avatar', (inputValues) 
       console.log('Ошибка:', err.message)
     })
     .finally(() => {
-      updateAvatarPopup.loadingData(false);
+      renderLoading(false, submitEditAvatar, titleSubmitEditAvatar);
 
     });
 },
@@ -101,8 +113,8 @@ const updateAvatarPopup = new PopupWithForm('.popup_type_avatar', (inputValues) 
     inputList.forEach(input => input.value = '')
   });
 
-const cardPopup = new PopupWithForm('.popup_type_add', (inputValues) => {
-  cardPopup.loadingData(true);
+const cardPopup = new PopupWithForm(selectorPopupAddCard, (inputValues) => {
+  renderLoading(true, submitAddCard,  titleSubmitAddCard);
   const card = {
     name: inputValues['input-name'],
     link: inputValues['input-image-link']
@@ -116,7 +128,7 @@ const cardPopup = new PopupWithForm('.popup_type_add', (inputValues) => {
       console.log('Ошибка при загрузке карточки:', err.message);
     })
     .finally(() => {
-      cardPopup.loadingData(false);
+      renderLoading(false, submitAddCard,  titleSubmitAddCard);
     })
 },
   (inputList) => {
@@ -124,7 +136,7 @@ const cardPopup = new PopupWithForm('.popup_type_add', (inputValues) => {
   }
 );
 
-const deleteCardPopup = new PopupWithClarification('.popup_type_deleteCard', (cardId, card) => {
+const deleteCardPopup = new PopupWithClarification(selectorPopupDeleteCard, (cardId, card) => {
   api.deleteCard(cardId)
     .then(() => {
       card.deleteCard();
@@ -163,7 +175,7 @@ function createCard(cardData, userId) {
     }
   })
   const cardElement = card.getElement();
-  return cardList.addItem(cardElement);
+  return cardList.prependItem(cardElement);
 }
 
 editButton.addEventListener('click', openEditProfile);
