@@ -6,7 +6,7 @@ export default
     super(selectorPopup);
     this._form = this._element.querySelector('.popup__container');
     this._submitButton = this._form.querySelector('.popup__button-form');
-    this._collbackSubmitForm = callbackSubmitForm;
+    this._callbackSubmitForm = callbackSubmitForm;
     this._handleFormFields = handleFormFields;
     this._inputList = this._element.querySelectorAll('.popup__input');
   }
@@ -21,7 +21,7 @@ export default
   setEventListeners() {
     this._element.addEventListener('submit', (event) => {
       event.preventDefault();
-      this._collbackSubmitForm(this._getInputValues());
+      this._callbackSubmitForm(this._getInputValues());
       this._submitButton.disabled = true;
     });
     super.setEventListeners();
